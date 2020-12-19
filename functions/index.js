@@ -34,6 +34,7 @@ const directoryPath = path.join(__dirname, "data");
       }
   
     });
+    return "";
   }
   async function saveCollection(files) {
     for (fileIndex in files) {
@@ -52,5 +53,6 @@ const directoryPath = path.join(__dirname, "data");
       return savedcollectionsRef;
   
     }
+    return "";
   }
   
