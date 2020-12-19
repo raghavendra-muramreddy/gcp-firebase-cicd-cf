@@ -19,7 +19,11 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     functions.logger.info("Hello logs!", { structuredData: true });
     firestore.collection("demo").doc("doc").set({"name":"Raghava"}).then(docref => {
         console.log("**********document uploaded*********");
-    });
+        return "success";
+    }).catch(function(error) {
+        console.error("Error adding document: ", error);
+        return "error";
+      });
     response.send("Hello from Firebase!");
 });
  
