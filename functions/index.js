@@ -20,7 +20,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     firestore.collection("demo").doc("doc").set({"name":"Raghava"}).then(docref => {
         console.log("**********document uploaded*********");
         response.send("success!");
-        return "success";
+        
     }).catch(error);
     response.send("Hello from Firebase!");
 });
