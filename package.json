@@ -1,0 +1,21 @@
+{
+  "name": "firebase_with_function",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npm run install-functions",
+    "install-functions": "cd functions && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raghavendra-muramreddy/gcp-firebase-cicd-cf.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raghavendra-muramreddy/gcp-firebase-cicd-cf/issues"
+  },
+  "homepage": "https://github.com/raghavendra-muramreddy/gcp-firebase-cicd-cf#readme"
+}
