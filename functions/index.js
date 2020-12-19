@@ -17,43 +17,9 @@ const directoryPath = path.join(__dirname, "data");
 //
 exports.helloWorld = functions.https.onRequest((request, response) => {
     functions.logger.info("Hello logs!", { structuredData: true });
-    readCollectionPath();
+    firestore.collection("demo").doc("doc").set({"name":"Raghava"}).then(docref => {
+        console.log("**********document uploaded*********");
+    });
     response.send("Hello from Firebase!");
 });
-async function readCollectionPath() {
-    fs.readdir(directoryPath, function (err, files) {
-        if (err) {
-            return console.log("Unable to scan directory: " + err);
-        } else {
-            saveCollection(files).then(collectionsList => {
-                console.log("total saved collections:" + collectionsList.length);
-                console.log("****************process end***************");
-                return collectionsList;
-            });
-
-        }
-        return "";
-    });
-    return "";
-}
-function saveCollection(files) {
-    for (fileIndex in files) {
-        var file = files[fileIndex];
-        var lastDotIndex = file.lastIndexOf(".");
-        var collectonName = file.substring(0, lastDotIndex);
-        //deleteCollectionIfExists(collectonName);
-        var menu = require("./data/" + file);
-        var savedcollectionsRef = []
-        for (menuIndex in menu) {
-            var obj = menu[menuIndex];
-            collectonName = file.substring(0, lastDotIndex);
-            firestore.collection(collectonName).doc(obj.itemID).set(obj).then(docref => {
-                savedcollectionsRef.push(docRef);
-            });
-
-        }
-        return savedcollectionsRef;
-
-    }
-    return "";
-}
+ 
